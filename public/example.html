@@ -20,27 +20,6 @@
   <!-- Template for a Spectrogram -->
   <div class="spectro">
     <div class="control">
-      <select name="fftN" class="fftN" required>
-        <option value="1024">N=1024</option>
-        <option value="512" selected>N=512</option>
-        <option value="256">N=256</option>
-        <option value="128">N=128</option>
-      </select>
-      <select name="height" class="height" required>
-        <option value="0">Auto</option>
-        <option value="1024">1024px</option>
-        <option value="512" selected>512px</option>
-        <option value="256">256px</option>
-        <option value="128">128px</option>
-      </select>
-      <select name="windowF" class="windowF" required>
-        <option value="rectangular">Rectangular</option>
-        <option value="bartlett">Bartlett</option>
-        <option value="hamming">Hamming</option>
-        <option value="hann">Hann</option>
-        <option value="blackman">Blackman</option>
-        <option value="blackmanHarris" selected>Blackman-Harris</option>
-      </select>
       <span class="group">
         <button name="zoomOut" class="zoomOut">-</button>
         <button name="zoomFit" class="zoomFit">Fit</button>
@@ -94,33 +73,6 @@
         <option value="naive">Naive</option>
         <option value="parula">Parula</option>
         <option value="sox">Sox</option>
-      </select>
-      <select name="ampHeight" class="ampHeight" required>
-        <option value="0">Amp bar off</option>
-        <option value="16">Amp tiny</option>
-        <option value="256">Amp full</option>
-      </select>
-      <select name="minmaxHeight" class="minmaxHeight" required>
-        <option value="0">dB bar off</option>
-        <option value="16" selected>dB tiny</option>
-        <option value="256">dB full</option>
-      </select>
-      <select name="histWidth" class="histWidth" required>
-        <option value="0">Hist off</option>
-        <option value="30">Hist tiny</option>
-        <option value="100" selected>Hist full</option>
-      </select>
-      <select name="channelMode" class="channelMode" required>
-        <option value="I/Q">I/Q SDR data</option>
-        <option value="L/R">L/R stereo audio</option>
-      </select>
-      <select name="turnFlip" class="turnFlip" required>
-        <option value="spectrogram">Spectrogram</option>
-        <option value="waterfall">Waterfall</option>
-      </select>
-      <select name="theme" class="theme" required>
-        <option value="light">Light</option>
-        <option value="dark">Dark</option>
       </select>
       <span class="fileinfo"></span>
     </div>
