@@ -36,12 +36,12 @@ class EasyCloning {
         // this.cloneTemplate.remove(); // would need polyfill on IE
         this.cloneParent.removeChild(this.cloneTemplate);
 
-        this.dropZone = new DropZone('#dropZone', this.cloneLoader.bind(this))
-        this.dropZone.addInput('#inputfile')
-        this.dropZone.addInput('#addfile')
+        this.dropZone = new DropZone('#dropZone', this.cloneLoader.bind(this));
+        this.dropZone.addInput('#inputfile');
+        // this.dropZone.addInput('#addfile');
 
         if (dataUrl) {
-            this.loadUrl(dataUrl)
+            this.loadUrl(dataUrl);
         }
     }
 
