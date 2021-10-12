@@ -87,6 +87,12 @@ label.inputfile-box:hover,
   color: blue;
 }
 
+.inputtle {
+  width: 100%;
+  display: block;
+  margin-bottom: 40px;
+}
+
 /* floating action button styles */
 .fab {
   width: 70px;

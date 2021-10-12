@@ -75,3 +75,31 @@ div#dropZone {
   color: #608;
   font-size: 0.8125em;
 }
+
+div#output h2 {
+/*  margin: 0;
+  padding: .15em 2em;*/
+  font-weight: normal;
+}
+#measurements {
+  border-collapse: collapse;
+  width: 40%;
+}
+
+#measurements td, #measurements th {
+  border: 2px solid #ccc;
+  padding: 8px;
+}
+
+#measurements th {
+  font-weight: normal;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #608;
+  color: white;
+}
+
+#measurements tr:nth-child(even){background-color: #f2f2f2;}
+
+#measurements tr:hover {background-color: #ddd;}

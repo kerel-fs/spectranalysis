@@ -109,8 +109,34 @@
     .hdf5 .h5
   </i>
 </label>
+<textarea id="inputtle" name="inputtle" rows="2" cols="80">1 40911U 15049N   20327.47578905  .00001232  00000-0  66600-4 0  9993
+2 40911  97.4809 326.9921 0013643 176.3365 309.2339 15.16473987286112</textarea>
+<br/>
+<textarea id="inputmetadata" name="inputmetadata" rows="6" cols="30">{
+  "latitude": 52.834,
+  "longitude": 6.379,
+  "elevation": 10,
+  "frequency": 145725000
+}</textarea>
 
-<input type="file" id="addfile" class="inputfile-files" name="files[]" multiple />
-<label for="addfile"><div class="fab"> + </div></label>
-
+<div id="output">
+  <h2>Frequency Measurements</h2>
+  <table id="measurements">
+  <thead>
+    <tr>
+      <th>Elapsed Time / seconds</th>
+      <th>relative Frequency / kHz</th>
+      <th>absolute Frequency / kHz</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="3">No measurements yet.</td>
+      </tr>
+    </tbody>
+  </table>
+  <button>
+    Download measurements
+  </button>
+</div>
 <script type="module" src="example.bundle.js"></script>
