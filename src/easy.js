@@ -62,6 +62,7 @@ class EasyCloning {
         const spectroplot = new Spectroplot(options);
         spectroplot.enableGuides();
         spectroplot.enableButtons();
+        spectroplot.enableCanvasClick();
         // spectroplot.createDropZone($refs.dropzone)
     }
 
