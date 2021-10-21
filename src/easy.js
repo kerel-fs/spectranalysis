@@ -43,6 +43,8 @@ class EasyCloning {
         if (dataUrl) {
             this.loadUrl(dataUrl);
         }
+
+        this.enableObservationSelectClick();
     }
 
     /**
@@ -72,6 +74,42 @@ class EasyCloning {
         @param {string} [dataUrl] - URL to load data from
     */
     loadUrl(dataUrl) {
-        loadUrl(dataUrl, this.cloneLoader);
+        const cloneLoaderBind = this.cloneLoader.bind(this);
+        loadUrl(dataUrl, cloneLoaderBind);
+    }
+
+
+    enableObservationSelectClick() {
+        const btn = document.getElementById('form-select-obs-btn');
+        let this_cloning = this;
+        btn.addEventListener('click', function(e) {
+            // const satnogs_db_api = "https://db.satnogs.org/api";
+            const satnogs_db_api = "http://localhost:8000/api";
+            // const satnogs_db_api = "https://db-dev.satnogs.org/api";
+
+            const observation_id = document.getElementById('form-select-obs-id').value;
+            if (!/^[0-9]+$/.test(observation_id)) {
+                alert("Invalid observation id!");
+                return;
+            }
+            const token = document.getElementById('form-select-token').value;
+            const resource = new URL(satnogs_db_api + "/artifacts/?network_obs_id=" + observation_id);
+            let myHeaders = new Headers();
+            myHeaders.append('Authorization', 'Token ' + token);
+            fetch(resource, {
+              method: 'GET',
+              headers: myHeaders,
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length != 1 || data[0]['network_obs_id'] != observation_id) {
+                        console.log("ERROR: Unexpected DB API response: ");
+                        console.log(data);
+                        return;
+                    }
+                    const artifact_url = data[0]['artifact_file'];
+                    this_cloning.loadUrl(artifact_url, this.cloneLoader);
+                });
+        });
     }
 }
