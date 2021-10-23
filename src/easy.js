@@ -11,7 +11,6 @@
 */
 
 import { Spectroplot, loadUrl } from 'spectroplot';
-import spectroplot_worker from 'worker-loader?filename=js/spectroplot.[hash].worker.js!spectroplot/lib/worker.js'
 import { DropZone } from 'spectroplot/lib/dropzone.js';
 import { selector } from 'spectroplot/lib/utils.js';
 
@@ -57,7 +56,6 @@ class EasyCloning {
         this.cloneParent.appendChild(parent_node);
 
         const options = {
-          'workerOrUrl': spectroplot_worker,
           'parent': parent_node,
           'filedata': filedata,
         };
