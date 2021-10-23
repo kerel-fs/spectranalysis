@@ -13,6 +13,7 @@
 import { Spectroplot, loadUrl } from 'spectroplot';
 import { DropZone } from 'spectroplot/lib/dropzone.js';
 import { selector } from 'spectroplot/lib/utils.js';
+import { persistInput } from './utils.js';
 
 export { EasyCloning }
 
@@ -44,6 +45,7 @@ class EasyCloning {
         }
 
         this.enableObservationSelectClick();
+        this.enableTokenStorage();
     }
 
     /**
@@ -109,5 +111,11 @@ class EasyCloning {
                     this_cloning.loadUrl(artifact_url, this.cloneLoader);
                 });
         });
+    }
+
+    enableTokenStorage() {
+        /* Store the form input for SatNOGS DB API Token in localStorage */
+        let inputElement = document.getElementById('form-select-token');
+        persistInput(inputElement);
     }
 }
