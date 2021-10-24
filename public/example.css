@@ -104,9 +104,43 @@ div#output h2 {
 
 #measurements tr:hover {background-color: #ddd;}
 
-div.form-select-obs {
-  display: flex;
-  justify-content: center;
-  border: 2px solid #000;
+#form-select-obs {
+  display: grid;
+  grid-template-areas:
+    'label0 field0'
+    'label1 field1'
+    'label2 field2'
+    'button button'
+    'footer footer'
+    'message message';
+
+  grid-row-gap: .5em;
+  grid-column-gap: 10px;
+
+  text-align: left;
+
+  border: 1px solid transparent;
+  margin: auto;
+  margin-top: 20px;
   padding: 12px;
+  width: 50%;
+
 }
+
+.form1-url-label { grid-area: label0; }
+.form1-url-item {
+  grid-area: field0;
+  width: 300px;
+}
+.form1-item1 { grid-area: label1; }
+.form1-item2 {
+  grid-area: field1;
+  width: 300px;
+}
+.form1-item3 { grid-area: label2; }
+.form1-item4 {
+  grid-area: field2;
+  width: 100px;
+}
+.form1-item5 { grid-area: footer; }
+#form1-message { grid-area: message; }
