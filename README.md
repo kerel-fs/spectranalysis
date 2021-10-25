@@ -27,15 +27,18 @@ spectroplot.js.
    npx webpack serve
    ```
 
+3. You can access the page at <http://localhost:8080/example.html> now.
+
 # Deployment Setup
 
-Run the following commands:
-```
-git clone https://github.com/kerel-fs/spectroplot-js
-yarn install
-npx webpack build
-```
-The complete output (html and css assets as well the bundled js) can be found in the `build` folder now.
+1. Run the following commands:
+   ```
+   git clone https://github.com/kerel-fs/spectranalysis
+   yarn install
+   npx webpack build
+   ```
+
+2. The complete output (html and css assets as well the bundled js) can be found in the `build` folder now.
 
 
 # License
