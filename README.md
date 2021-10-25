@@ -2,20 +2,34 @@
 
 This demo is based on the spectroplot.js example relying on the EasyCloning class for creating the DOM needed by the library.
 
-- Setup dependencies
-  ```
-  yarn install
-  ```
+# Deployment
 
-- Build the javascript bundle
-  ```
-  yarn build
-  ```
+Run the following commands:
+```
+git clone https://github.com/kerel-fs/spectroplot-js
+yarn install
+npx webpack build
+```
+The complete output (html and css assets as well the bundled js) can be found in the `build` folder now.
 
-- Serve the files for development
-  ```
-  yarn serve
-  ```
+# Setup of development environment for spectranalysis + spectroplot.js
+
+Checkout spectroplot.js and register the package locally with `yarn link`:
+```
+git clone https://github.com/kerel-fs/spectroplot-js
+cd spectroplot.js
+yarn install
+yarn link
+```
+
+Then checkout spectranalysis, link to the previously registered package and
+run a local webserver:
+```
+git clone https://github.com/kerel-fs/spectranalysis
+yarn install
+yarn link "spectroplot"
+npx webpack serve
+```
 
 # License
 
