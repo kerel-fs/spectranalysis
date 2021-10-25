@@ -83,16 +83,14 @@ class EasyCloning {
         const btn = document.getElementById('form-select-obs-btn');
         let this_cloning = this;
         btn.addEventListener('click', function(e) {
-            // const satnogs_db_api = "https://db.satnogs.org/api";
-            const satnogs_db_api = "http://localhost:8000/api";
-            // const satnogs_db_api = "https://db-dev.satnogs.org/api";
-
+            const satnogs_db_api = document.getElementById('form-select-url').value;
             const observation_id = document.getElementById('form-select-obs-id').value;
+            const token = document.getElementById('form-select-token').value;
+
             if (!/^[0-9]+$/.test(observation_id)) {
                 alert("Invalid observation id!");
                 return;
             }
-            const token = document.getElementById('form-select-token').value;
             const resource = new URL(satnogs_db_api + "/artifacts/?network_obs_id=" + observation_id);
             let myHeaders = new Headers();
             myHeaders.append('Authorization', 'Token ' + token);
