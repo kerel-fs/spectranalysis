@@ -66,6 +66,10 @@ class EasyCloning {
         spectroplot.enableButtons();
         spectroplot.enableCanvasClick();
         // spectroplot.createDropZone($refs.dropzone)
+
+        // Hide the "Loading..." message & the input form
+        document.getElementById('form1-message').style.display = 'none';
+        document.getElementById('input-methods').style.display = 'none';
     }
 
     /**
@@ -91,6 +95,11 @@ class EasyCloning {
                 alert("Invalid observation id!");
                 return;
             }
+
+            let message = document.getElementById('form1-message');
+            message.innerHTML = "Loading...";
+            message.style.display = null;
+
             const resource = new URL(satnogs_db_api + "/artifacts/?network_obs_id=" + observation_id);
             let myHeaders = new Headers();
             myHeaders.append('Authorization', 'Token ' + token);
