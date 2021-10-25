@@ -5,7 +5,29 @@ It implements loading of SatNOGS Artifacts (HDF5 files), displaying the containe
 for extracing timestamped frequency measurements from it.
 
 The latest codes is published using GitHub Actions on github-pages at <https://kerel-fs.github.io/spectranalysis/example.html>.
-# Deployment
+
+# Development Setup
+
+This section describes how to setup a combined development environment for spectranalysis and
+spectroplot.js.
+1. Checkout spectroplot.js and register the package locally with `yarn link`:
+   ```
+   git clone https://github.com/kerel-fs/spectroplot-js
+   cd spectroplot.js
+   yarn install
+   yarn link
+   ```
+
+2. Then checkout spectranalysis, link to the previously registered package and
+   run a local webserver:
+   ```
+   git clone https://github.com/kerel-fs/spectranalysis
+   yarn install
+   yarn link "spectroplot"
+   npx webpack serve
+   ```
+
+# Deployment Setup
 
 Run the following commands:
 ```
@@ -15,24 +37,6 @@ npx webpack build
 ```
 The complete output (html and css assets as well the bundled js) can be found in the `build` folder now.
 
-# Setup of development environment for spectranalysis + spectroplot.js
-
-Checkout spectroplot.js and register the package locally with `yarn link`:
-```
-git clone https://github.com/kerel-fs/spectroplot-js
-cd spectroplot.js
-yarn install
-yarn link
-```
-
-Then checkout spectranalysis, link to the previously registered package and
-run a local webserver:
-```
-git clone https://github.com/kerel-fs/spectranalysis
-yarn install
-yarn link "spectroplot"
-npx webpack serve
-```
 
 # License
 
