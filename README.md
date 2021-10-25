@@ -4,6 +4,7 @@ This demo is based on the spectroplot.js example relying on the EasyCloning clas
 It implements loading of SatNOGS Artifacts (HDF5 files), displaying the contained waterfall file and provides an interface
 for extracing timestamped frequency measurements from it.
 
+The latest codes is published using GitHub Actions on github-pages at <https://kerel-fs.github.io/spectranalysis/example.html>.
 # Deployment
 
 Run the following commands:
