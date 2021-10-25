@@ -1,6 +1,8 @@
-# spectroplot.js + SatNOGS Artifacts Demo 3
+# SatNOGS Artifacts Waterfall Viewer
 
 This demo is based on the spectroplot.js example relying on the EasyCloning class for creating the DOM needed by the library.
+It implements loading of SatNOGS Artifacts (HDF5 files), displaying the contained waterfall file and provides an interface
+for extracing timestamped frequency measurements from it.
 
 # Deployment
 
