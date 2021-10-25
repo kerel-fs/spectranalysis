@@ -113,7 +113,8 @@ class EasyCloning {
 
     enableTokenStorage() {
         /* Store the form input for SatNOGS DB API Token in localStorage */
-        let inputElement = document.getElementById('form-select-token');
-        persistInput(inputElement);
+        persistInput(document.getElementById('form-select-token'));
+        persistInput(document.getElementById('form-select-url'));
+        persistInput(document.getElementById('form-select-obs-id'));
     }
 }
