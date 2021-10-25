@@ -85,11 +85,17 @@ div#dropZone {
   font-size: 0.8125em;
 }
 
-div#output h2 {
-/*  margin: 0;
-  padding: .15em 2em;*/
+#output {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 0 10% 0 10%;
+  padding: 10px;
+}
+
+#output h2 {
   font-weight: normal;
 }
+
 #measurements {
   border-collapse: collapse;
   width: 40%;
