@@ -44,7 +44,7 @@ class EasyCloning {
             this.loadUrl(dataUrl);
         }
 
-        this.enableObservationSelectClick();
+        this.enableButtons();
         this.enableTokenStorage();
     }
 
@@ -61,10 +61,10 @@ class EasyCloning {
           'parent': parent_node,
           'filedata': filedata,
         };
-        const spectroplot = new Spectroplot(options);
-        spectroplot.enableGuides();
-        spectroplot.enableButtons();
-        spectroplot.enableCanvasClick();
+        this.spectroplot = new Spectroplot(options);
+        this.spectroplot.enableGuides();
+        this.spectroplot.enableButtons();
+        this.spectroplot.enableCanvasClick();
         // spectroplot.createDropZone($refs.dropzone)
 
         // Hide the "Loading..." message & the input form
@@ -83,9 +83,22 @@ class EasyCloning {
     }
 
 
-    enableObservationSelectClick() {
-        const btn = document.getElementById('form-select-obs-btn');
-        btn.addEventListener('click', this.selectObsBtnClicked.bind(this));
+    enableButtons() {
+        document.getElementById('form-select-obs-btn')
+            .addEventListener('click', this.selectObsBtnClicked.bind(this));
+        document.getElementById('form2-btn')
+            .addEventListener('click', this.downloadMeasurementsClicked.bind(this));
+    }
+
+    downloadMeasurementsClicked(e) {
+        const encodedUri = this.spectroplot.getMeasurements();
+
+        let link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "measurements.dat");
+        document.body.appendChild(link);
+        link.click()
+        document.body.removeChild(link);
     }
 
     selectObsBtnClicked(e) {
