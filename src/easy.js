@@ -114,7 +114,8 @@ class EasyCloning {
                         console.log(data);
                         return;
                     }
-                    const artifact_url = data[0]['artifact_file'];
+                    let artifact_url = data[0]['artifact_file'];
+                    artifact_url = artifact_url.replace("http://","https://");
                     this_cloning.loadUrl(artifact_url, this.cloneLoader);
                 });
         });
