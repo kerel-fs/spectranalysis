@@ -11,7 +11,7 @@
         "webpack-dev-server": "^4.1.0"
     },
     "dependencies": {
-        "spectroplot": "kerel-fs/spectroplot-js#553d3e9"
+        "spectroplot": "kerel-fs/spectroplot-js#8364a86"
     },
     "scripts": {
         "watch": "webpack --watch",
