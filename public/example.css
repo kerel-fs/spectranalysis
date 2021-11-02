@@ -166,3 +166,26 @@ div#dropZone {
 
 #form2-btn {
 }
+
+#form-tle {
+  margin: auto auto 10px auto;
+  width: 60%;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.form-tle-entry {
+  display: block;
+  text-align: right;
+  margin: 5px;
+}
+
+.form-tle-label {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.form-tle-item {
+  width: 80%;
+}

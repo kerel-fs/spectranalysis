@@ -88,6 +88,21 @@ class EasyCloning {
             .addEventListener('click', this.selectObsBtnClicked.bind(this));
         document.getElementById('form2-btn')
             .addEventListener('click', this.downloadMeasurementsClicked.bind(this));
+        document.getElementById('form-overlay-btn')
+            .addEventListener('click', this.overlayLocalClicked.bind(this));
+        document.getElementById('form-tle-btn')
+            .addEventListener('click', this.overlayRemoteClicked.bind(this));
+    }
+
+    overlayLocalClicked(e) {
+        // Enable local transmitter overlay
+        this.spectroplot.showOverlayLocal = true;
+        this.spectroplot.processData();
+    }
+    overlayRemoteClicked(e) {
+        // Enable remote transmitter overlay
+        this.spectroplot.showOverlayRemote = true;
+        this.spectroplot.processData();
     }
 
     downloadMeasurementsClicked(e) {
@@ -136,9 +151,14 @@ class EasyCloning {
     }
 
     enableTokenStorage() {
-        /* Store the form input for SatNOGS DB API Token in localStorage */
+        /* Store the form input for SatNOGS DB API Token & URL in localStorage */
         persistInput(document.getElementById('form-select-token'));
         persistInput(document.getElementById('form-select-url'));
+
+        /* For debugging: Store all other input fields in localStorage as well */
         persistInput(document.getElementById('form-select-obs-id'));
+        persistInput(document.getElementById('form-overlay-local-offset'));
+        persistInput(document.getElementById('form-overlay-remote-tle'));
+        persistInput(document.getElementById('form-overlay-remote-offset'));
     }
 }

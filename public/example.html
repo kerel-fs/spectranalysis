@@ -127,7 +127,31 @@
     </div>
   </div>
 </div>
-
+<div id="form-tle" style="display:none;">
+  <div>
+    <h4>Add local noise</h4>
+    <div class="form-tle-entry">
+      <label class="form-tle-label" for="overlay_frequency_local">Frequency Offset:</label>
+      <input class="form-tle-item" id="form-overlay-local-offset" type="text" name="overlay_frequency_local" value="0" required/>
+      kHz
+    </div>
+    <input id="form-overlay-btn" type="button" value="Overlay"/>
+  </div>
+  <div>
+    <h4>Add a second object</h4>
+    <div class="form-tle-entry">
+      <label class="form-tle-label" for="overlay_tle">TLE:</label>
+      <textarea class="form-tle-item" id="form-overlay-remote-tle" name="overlay_tle" rows="3" cols="30">
+      </textarea>
+    </div>
+    <div class="form-tle-entry">
+      <label class="form-tle-label" for="overlay_frequency_second">Frequency Offset:</label>
+      <span><input class="form-tle-item" id="form-overlay-remote-offset" type="text" name="overlay_frequency_second" value="" required/>
+      kHz<span>
+    </div>
+    <input id="form-tle-btn" type="button" value="Overlay"/>
+  </div>
+</div>
 <div id="output" style="display:none;">
   <h2>Frequency Measurements</h2>
   <table id="measurements">
