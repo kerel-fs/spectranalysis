@@ -40,6 +40,23 @@ spectroplot.js.
 
 2. The complete output (html and css assets as well the bundled js) can be found in the `build` folder now.
 
+# Usage
+
+## Load SatNOGS Artifacts Waterfall
+
+1. Open [spectranalysis](https://kerel-fs.github.io/spectranalysis/example.html)
+
+2. Enter the correct SatNOGS DB API URL: `https://db.satnogs.org/api`
+
+3. Register at SatNOGS DB, login and copy your SatNOGS DB API Token into spectranalysis
+
+4. Choose the observation you want to analyze, e.g. `4950356` for [Observation #4950356](https://network.satnogs.org/observations/4950356/).
+
+5. Press `Load`. It might take a few seconds for loading the waterfall data into the browser.
+
+Now you can inspect interactively the waterfall from this observation. Hovering over the waterfall will show the
+current relative time and frequency at the given location. Example:
+![](docs/spectranalysis_obs4950356.png)
 
 # License
 
