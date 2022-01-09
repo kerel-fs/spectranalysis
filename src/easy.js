@@ -84,6 +84,8 @@ class EasyCloning {
 
 
     enableButtons() {
+        document.getElementById('form-select-show-token')
+            .addEventListener('click', this.showTokenClicked.bind(this));
         document.getElementById('form-select-obs-btn')
             .addEventListener('click', this.selectObsBtnClicked.bind(this));
         document.getElementById('form2-btn')
@@ -114,6 +116,15 @@ class EasyCloning {
         document.body.appendChild(link);
         link.click()
         document.body.removeChild(link);
+    }
+
+    showTokenClicked(e) {
+        let x = document.getElementById("form-select-token");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
     }
 
     selectObsBtnClicked(e) {

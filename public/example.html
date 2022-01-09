@@ -22,7 +22,11 @@
     <input class="form1-url-item" id="form-select-url" type="text" name="db_url" value="https://db-dev.satnogs.org/api" required/>
 
     <label class="form1-item1" for="db_token">SatNOGS DB API Token</label>
-    <input class="form1-item2" id="form-select-token" type="text" name="db_token" value="" required/>
+    <span class=form1-item2">
+      <input id="form-select-token" type="password" name="db_token" value="" required/>
+      <input id="form-select-show-token" type="checkbox" name="show_token" />
+      <label for="show_token">Show token</label>
+    </span>
 
     <label class="form1-item3" for="observation_id">SatNOGS Observation ID</label>
     <input class="form1-item4" id="form-select-obs-id" type="text" name="observation_id" value="" required/>
