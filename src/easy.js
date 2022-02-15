@@ -151,13 +151,19 @@ class EasyCloning {
             .then(response => response.json())
             .then(data => {
                 if (data.length != 1 || data[0]['network_obs_id'] != observation_id) {
-                    console.log("ERROR: Unexpected DB API response: ");
-                    console.log(data);
+                    message.innerHTML = "ERROR: Unexpected DB API response: <br/>" + data['detail']
+                    + "<br/> Please check that SatNOGS DB API URL and SatNOGS DB API Token are correct.";
+                    message.style.display = null;
                     return;
                 }
                 let artifact_url = data[0]['artifact_file'];
                 artifact_url = artifact_url.replace("http://","https://");
                 this.loadUrl(artifact_url, this.cloneLoader);
+            })
+            .catch(error => {
+                    message.innerHTML = "ERROR: API Request failed. Reason:<br/>" + error;
+                    message.style.display = null;
+                    console.log(error);
             });
     }
 
