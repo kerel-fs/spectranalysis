@@ -27,9 +27,9 @@ class EasyCloning {
         new EasyCloning('#spectros', document.location.hash.substring(1))
 
         @param {Object|string} elementOrSelector - Parent element or selector
-        @param {string} [dataUrl] - URL to load data from
+        @param {string} [observation_url] - URL to load the observation
     */
-    constructor(elementOrSelector, dataUrl) {
+    constructor(elementOrSelector, observation_url) {
         this.cloneParent = selector(elementOrSelector);
         // grab the template and remove from DOM
         this.cloneTemplate = this.cloneParent.firstElementChild;
@@ -40,12 +40,12 @@ class EasyCloning {
         this.dropZone.addInput('#inputfile');
         // this.dropZone.addInput('#addfile');
 
-        if (dataUrl) {
-            this.loadUrl(dataUrl);
-        }
-
         this.enableButtons();
         this.enableTokenStorage();
+
+        if (observation_url) {
+            this.loadArtifact(observation_url);
+        }
     }
 
     /**
@@ -130,7 +130,6 @@ class EasyCloning {
     selectObsBtnClicked(e) {
         const satnogs_db_api = document.getElementById('form-select-url').value;
         const observation_id = document.getElementById('form-select-obs-id').value;
-        const token = document.getElementById('form-select-token').value;
 
         if (!/^[0-9]+$/.test(observation_id)) {
             alert("Invalid observation id!");
@@ -141,16 +140,24 @@ class EasyCloning {
         message.innerHTML = "Loading...";
         message.style.display = null;
 
-        const resource = new URL(satnogs_db_api + "/artifacts/?network_obs_id=" + observation_id);
+        const observation_url = new URL(satnogs_db_api + "/artifacts/?network_obs_id=" + observation_id);
+        console.log(observation_url);
+        this.loadArtifact(observation_url);
+    }
+
+    loadArtifact(observation_url) {
+        const token = document.getElementById('form-select-token').value;
+        let message = document.getElementById('form1-message');
+
         let myHeaders = new Headers();
         myHeaders.append('Authorization', 'Token ' + token);
-        fetch(resource, {
+        fetch(observation_url, {
           method: 'GET',
           headers: myHeaders,
         })
             .then(response => response.json())
             .then(data => {
-                if (data.length != 1 || data[0]['network_obs_id'] != observation_id) {
+                if (data.length != 1) {
                     message.innerHTML = "ERROR: Unexpected DB API response: <br/>" + data['detail']
                     + "<br/> Please check that SatNOGS DB API URL and SatNOGS DB API Token are correct.";
                     message.style.display = null;
