@@ -29,7 +29,7 @@ class EasyCloning {
         @param {Object|string} elementOrSelector - Parent element or selector
         @param {string} [observation_url] - URL to load the observation
     */
-    constructor(elementOrSelector, observation_url) {
+    constructor(elementOrSelector, observation_id) {
         this.cloneParent = selector(elementOrSelector);
         // grab the template and remove from DOM
         this.cloneTemplate = this.cloneParent.firstElementChild;
@@ -43,8 +43,8 @@ class EasyCloning {
         this.enableButtons();
         this.enableTokenStorage();
 
-        if (observation_url) {
-            this.loadArtifact(observation_url);
+        if (observation_id) {
+            this.loadArtifact(observation_id);
         }
     }
 
@@ -128,26 +128,26 @@ class EasyCloning {
     }
 
     selectObsBtnClicked(e) {
-        const satnogs_db_api = document.getElementById('form-select-url').value;
         const observation_id = document.getElementById('form-select-obs-id').value;
+        this.loadArtifact(observation_id);
+    }
+
+    loadArtifact(observation_id) {
+        let message = document.getElementById('form1-message');
 
         if (!/^[0-9]+$/.test(observation_id)) {
-            alert("Invalid observation id!");
+            message.innerHTML = "Invalid observation id!";
+            message.style.display = null;
             return;
         }
 
-        let message = document.getElementById('form1-message');
         message.innerHTML = "Loading...";
         message.style.display = null;
 
+        const satnogs_db_api = document.getElementById('form-select-url').value;
         const observation_url = new URL(satnogs_db_api + "/artifacts/?network_obs_id=" + observation_id);
-        console.log(observation_url);
-        this.loadArtifact(observation_url);
-    }
 
-    loadArtifact(observation_url) {
         const token = document.getElementById('form-select-token').value;
-        let message = document.getElementById('form1-message');
 
         let myHeaders = new Headers();
         myHeaders.append('Authorization', 'Token ' + token);
