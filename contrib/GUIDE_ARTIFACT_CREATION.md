@@ -1,13 +1,28 @@
-# How to enable SatNOGS Artifact Creation (2021-10-28)
+## How to enable the creation of SatNOGS Artifacts (HDF5 files)
 
-1. Set `EXPERIMENTAL=True` to get development versions (can't be undone without flashing a new image!)
-2. Enable Artifacts upload
+(last updated: 2022-02-17)
+
+Using `sudo satnogs-setup` the two following steps must be performed to enable the creation of
+SatNOGS Artifacts (HDF5 files).
+
+1. Make sure that `satnogs-client` version 1.7 or later is installed, by one of the following methods:
+   - Set `SATNOGS_CLIENT_VERSION` to `1.7` OR
+   - Set `EXPERIMENTAL=True` to get development versions (can't be undone without flashing a new image!)
+2. Enable Artifacts upload with
    ```
    SATNOGS_ARTIFACTS_ENABLED=True
    SATNOGS_ARTIFACTS_API_URL=https://db-dev.satnogs.org/api/
    SATNOGS_ARTIFACTS_API_TOKEN={{ your SatNOGS DB API Token }}
    ```
 
+Note:
+The SatNOGS Network API Token and the SatNOGS DB API Token are different.
+The Network API Token is required to fetch jobs and upload observations/waterfalls/audio/data,
+the DB API Token is required to upload (hdf5) artifacts only. They can be easily confused,
+both are 40 characters long alphanumeric strings.
+
+
+## How to enable local SatNOGS Artifacts storage
 NOTE: Upload to db & db-dev is currently broken due to a server-side bug.
 
 To store artifacts locally
