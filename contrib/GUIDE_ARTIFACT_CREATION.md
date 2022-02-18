@@ -1,6 +1,6 @@
 ## How to enable the creation of SatNOGS Artifacts (HDF5 files)
 
-(last updated: 2022-02-17)
+(last updated: 2022-02-18)
 
 Using `sudo satnogs-setup` the two following steps must be performed to enable the creation of
 SatNOGS Artifacts (HDF5 files).
@@ -11,7 +11,7 @@ SatNOGS Artifacts (HDF5 files).
 2. Enable Artifacts upload with
    ```
    SATNOGS_ARTIFACTS_ENABLED=True
-   SATNOGS_ARTIFACTS_API_URL=https://db-dev.satnogs.org/api/
+   SATNOGS_ARTIFACTS_API_URL=https://db.satnogs.org/api/
    SATNOGS_ARTIFACTS_API_TOKEN={{ your SatNOGS DB API Token }}
    ```
 
