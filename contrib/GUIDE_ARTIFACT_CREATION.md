@@ -23,9 +23,10 @@ both are 40 characters long alphanumeric strings.
 
 
 ## How to enable local SatNOGS Artifacts storage
-NOTE: Upload to db & db-dev is currently broken due to a server-side bug.
 
-To store artifacts locally
+In case the upload to db is broken, or for further local analysis, the following steps can
+be performed to keep the artifacts stored locally.
+
 1. Create the output folder
    ```
    mkdir /tmp/.satnogs/artifacts`
