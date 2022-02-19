@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang=en-us>
+<header>
+<meta charset=utf-8>
+<title>SatNOGS Artifacts Waterfall Viewer</title>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<link rel=stylesheet href="styles.css">
+<link rel=stylesheet href="example.css">
+<script type="module" src="main.bundle.js"></script>
+</header>
+<body>
+<!-- drop zone overlay -->
+<div id="dropZone"></div>
+
+<div id="header">
+  <h1>SatNOGS Artifacts - Waterfall Viewer</h1>
+</div>
+
+<div id="input-methods">
+  <div id="form-select-obs">
+    <label class="form1-url-label" for="db_token">SatNOGS DB API URL</label>
+    <input class="form1-url-item" id="form-select-url" type="text" name="db_url" value="https://db.satnogs.org/api" required/>
+
+    <label class="form1-item1" for="db_token">SatNOGS DB API Token</label>
+    <span class=form1-item2">
+      <input id="form-select-token" type="password" name="db_token" value="" required/>
+      <input id="form-select-show-token" type="checkbox" name="show_token" />
+      <label for="show_token">Show token</label>
+    </span>
+
+    <label class="form1-item3" for="observation_id">SatNOGS Observation ID</label>
+    <input class="form1-item4" id="form-select-obs-id" type="text" name="observation_id" value="" required/>
+
+    <input class="form1-item5" id="form-select-obs-btn" type="button" value="Load"/>
+    <p id="form1-message" style="display: none;"></p>
+  </div>
+  OR
+  <label class="inputfile-box">
+    <svg class="inputfile-icon" xmlns="http://www.w3.org/2000/svg" width="50" height="43" viewBox="0 0 50 43">
+      <path d="M48.4 26.5c-.9 0-1.7.7-1.7 1.7v11.6h-43.3v-11.6c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v13.2c0 .9.7 1.7 1.7 1.7h46.7c.9 0 1.7-.7 1.7-1.7v-13.2c0-1-.7-1.7-1.7-1.7zm-24.5 6.1c.3.3.8.5 1.2.5.4 0 .9-.2 1.2-.5l10-11.6c.7-.7.7-1.7 0-2.4s-1.7-.7-2.4 0l-7.1 8.3v-25.3c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7 1.7v25.3l-7.1-8.3c-.7-.7-1.7-.7-2.4 0s-.7 1.7 0 2.4l10 11.6z"></path>
+    </svg>
+    <input type="file" id="inputfile" class="inputfile-files" name="files[]" accept=".hdf5,.h5" />
+    <strong>Choose a file</strong>
+    <span> or drag it here</span>.
+    <br>
+    <i>
+      .hdf5 .h5
+    </i>
+  </label>
+</div>
+
+<!-- Container for Spectrogram -->
+<div id="spectros">
+
+  <!-- Template for a Spectrogram -->
+  <div class="spectro">
+    <div class="control">
+      <span class="group">
+        <button name="zoomOut" class="zoomOut">-</button>
+        <button name="zoomFit" class="zoomFit">Fit</button>
+        <button name="zoomIn" class="zoomIn">+</button>
+      </span>
+      </select>
+      <select name="gain" class="gain" required>
+        <option value="0">+0 dB</option>
+        <option value="3">+3 dB</option>
+        <option value="6" selected>+6 dB</option>
+        <option value="9">+9 dB</option>
+        <option value="12">+12 dB</option>
+        <option value="15">+15 dB</option>
+        <option value="18">+18 dB</option>
+        <option value="21">+21 dB</option>
+        <option value="24">+24 dB</option>
+        <option value="27">+27 dB</option>
+        <option value="30">+30 dB</option>
+        <option value="36">+36 dB</option>
+        <option value="42">+42 dB</option>
+        <option value="48">+48 dB</option>
+        <option value="54">+54 dB</option>
+        <option value="60">+60 dB</option>
+        <option value="72">+72 dB</option>
+        <option value="90">+90 dB</option>
+      </select>
+      <select name="range" class="range" required>
+        <option value="6">+6 dB</option>
+        <option value="12">+12 dB</option>
+        <option value="18">+18 dB</option>
+        <option value="24">+24 dB</option>
+        <option value="30" selected>+30 dB</option>
+        <option value="36">+36 dB</option>
+        <option value="42">+42 dB</option>
+        <option value="48">+48 dB</option>
+        <option value="54">+54 dB</option>
+        <option value="60">+60 dB</option>
+        <option value="72">+72 dB</option>
+        <option value="90">+90 dB</option>
+        <option value="120">+120 dB</option>
+      </select>
+      <select name="cmap" class="cmap" required>
+        <option value="viridis">Viridis</option>
+        <option value="cube1">Cube1</option>
+        <option value="plasma">Plasma</option>
+        <option value="inferno">Inferno</option>
+        <option value="magma">Magma</option>
+        <option value="hot">Hot</option>
+        <option value="afmhot">Afmhot</option>
+        <option value="gist_heat">Gist heat</option>
+        <option value="naive">Naive</option>
+        <option value="parula">Parula</option>
+        <option value="sox">Sox</option>
+      </select>
+      <span class="fileinfo"></span>
+    </div>
+
+    <div>
+      <div class="draw">
+        <div class="left">
+          <canvas class="freq"></canvas>
+        </div>
+        <div class="scroll">
+          <canvas class="guides"></canvas>
+          <canvas class="fft"></canvas>
+          <canvas class="time"></canvas>
+          <canvas class="amp"></canvas>
+          <canvas class="minmax"></canvas>
+        </div>
+        <div class="right">
+          <canvas class="dbfs"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="form-tle" style="display:none;">
+  <div>
+    <h4>Add local noise</h4>
+    <div class="form-tle-entry">
+      <label class="form-tle-label" for="overlay_frequency_local">Frequency Offset:</label>
+      <input class="form-tle-item" id="form-overlay-local-offset" type="text" name="overlay_frequency_local" value="0" required/>
+      kHz
+    </div>
+    <input id="form-overlay-btn" type="button" value="Overlay"/>
+  </div>
+  <div>
+    <h4>Add a second object</h4>
+    <div class="form-tle-entry">
+      <label class="form-tle-label" for="overlay_tle">TLE:</label>
+      <textarea class="form-tle-item" id="form-overlay-remote-tle" name="overlay_tle" rows="3" cols="30"></textarea>
+    </div>
+    <div class="form-tle-entry">
+      <label class="form-tle-label" for="overlay_frequency_second">Frequency Offset:</label>
+      <span><input class="form-tle-item" id="form-overlay-remote-offset" type="text" name="overlay_frequency_second" value="0" required/>
+      kHz<span>
+    </div>
+    <input id="form-tle-btn" type="button" value="Overlay"/>
+  </div>
+</div>
+<div id="output" style="display:none;">
+  <h2>Frequency Measurements</h2>
+  <table id="measurements">
+  <thead>
+    <tr>
+      <th>Elapsed Time / seconds</th>
+      <th>relative Frequency / kHz</th>
+      <th>Absolute Time / Julian Date</th>
+      <th>Absolute Frequency / Hz</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="2">No measurements yet.</td>
+      </tr>
+    </tbody>
+  </table>
+  <input id="form2-btn" type="button" value="Download (STRF-compatible file)"/>
+</div>
+<div>
+<span>Source Code:<div id="footer_version" style="display:none;">unknown</div></span>
+</body>
+</html>

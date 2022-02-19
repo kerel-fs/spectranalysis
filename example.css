@@ -1,0 +1,191 @@
+body {
+  margin: 0;
+  padding: 0;
+
+  font-family: sans-serif;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+div#header {
+/*
+  background: #608;
+  color: #fff;
+  */
+}
+
+div#header h1 {
+  margin: 0;
+  padding: .15em 2em;
+/*  font-weight: normal;*/
+  border: 1px solid grey;
+  border-radius: 20px;
+}
+div#header small {
+/*
+  font-size: 0.5em;
+  font-weight: bold;*/
+}
+
+div#dropZone {
+  background: gray;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  opacity: 0.6;
+  visibility: hidden;
+}
+
+.control {
+  display: flex;
+  flex-wrap: wrap;
+  background: #608;
+}
+
+.control select,
+.control button {
+  margin-left: 1em;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  padding: .5em .25em;
+  color: #fff;
+  background-color: #92b;
+}
+
+.control .group {
+  display: flex;
+  margin-left: 1em;
+}
+.control button {
+  min-width: 2em;
+  margin-left: 1px;
+  border: 1px solid #92b;
+}
+
+.fileinfo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-left: 1em;
+}
+
+.fileinfo span {
+  display: block;
+  margin: .2em;
+  padding: .25em 1em;
+  border-radius: 16px;
+  background: #ddd;
+  color: #608;
+  font-size: 0.8125em;
+}
+
+#output {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 0 10% 0 10%;
+  padding: 10px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  text-align: left;
+}
+
+#output h2 {
+  font-weight: normal;
+}
+
+#measurements {
+  border-collapse: collapse;
+  width: 40%;
+  margin-bottom: 10px;
+}
+
+#measurements td, #measurements th {
+  border: 2px solid #ccc;
+  padding: 8px;
+}
+
+#measurements th {
+  font-weight: normal;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #608;
+  color: white;
+}
+
+#measurements tr:nth-child(even){background-color: #f2f2f2;}
+
+#measurements tr:hover {background-color: #ddd;}
+
+#form-select-obs {
+  display: grid;
+  grid-template-areas:
+    'label0 field0'
+    'label1 field1'
+    'label2 field2'
+    'button button'
+    'footer footer'
+    'message message';
+
+  grid-row-gap: .5em;
+  grid-column-gap: 10px;
+
+  text-align: left;
+
+  border: 1px solid transparent;
+  margin: auto;
+  margin-top: 20px;
+  padding: 12px;
+  width: 50%;
+
+}
+
+.form1-url-label { grid-area: label0; }
+.form1-url-item {
+  grid-area: field0;
+  width: 300px;
+}
+.form1-item1 { grid-area: label1; }
+.form1-item2 {
+  grid-area: field1;
+  width: 300px;
+}
+.form1-item3 { grid-area: label2; }
+.form1-item4 {
+  grid-area: field2;
+  width: 100px;
+}
+.form1-item5 { grid-area: footer; }
+#form1-message { grid-area: message; }
+
+#form2-btn {
+}
+
+#form-tle {
+  margin: auto auto 10px auto;
+  width: 60%;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.form-tle-entry {
+  display: block;
+  text-align: right;
+  margin: 5px;
+}
+
+.form-tle-label {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.form-tle-item {
+  width: 80%;
+}
